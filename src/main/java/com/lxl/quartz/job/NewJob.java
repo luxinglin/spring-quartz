@@ -15,15 +15,12 @@ import java.util.Date;
  **/
 public class NewJob implements BaseJob {
 
-    private static Logger _log = LoggerFactory.getLogger(NewJob.class);
+    private static Logger logger = LoggerFactory.getLogger(NewJob.class);
 
-    public NewJob() {
-
-    }
-
+    @Override
     public void execute(JobExecutionContext context)
             throws JobExecutionException {
-        _log.error("New Job执行时间: " + new Date());
+        logger.error("New Job执行时间: " + new Date());
 
     }
 }  

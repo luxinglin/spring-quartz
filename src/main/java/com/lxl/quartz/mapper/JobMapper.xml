@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.lxl.quartz.dao.JobAndTriggerMapper">
-    
-    <select id="getJobAndTriggerDetails" resultType="com.lxl.quartz.entity.JobAndTrigger">
+
+    <resultMap id="jobAndTriggerResultMap" type="com.lxl.quartz.entity.JobAndTrigger">
+        <result property="jobName" column="JOB_NAME" jdbcType="VARCHAR"/>
+        <result property="jobGroup" column="JOB_GROUP" jdbcType="VARCHAR"/>
+        <result property="jobClassName" column="JOB_CLASS_NAME" jdbcType="VARCHAR"/>
+        <result property="triggerName" column="TRIGGER_NAME" jdbcType="VARCHAR"/>
+        <result property="triggerGroup" column="TRIGGER_GROUP" jdbcType="VARCHAR"/>
+        <result property="cronExpression" column="CRON_EXPRESSION" jdbcType="VARCHAR"/>
+        <result property="timeZoneId" column="TIME_ZONE_ID" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="getJobAndTriggerDetails" resultMap="jobAndTriggerResultMap">
 			SELECT
 				qrtz_job_details.JOB_NAME,
 				qrtz_job_details.JOB_GROUP,
@@ -18,5 +28,5 @@
 			AND qrtz_triggers.TRIGGER_NAME = qrtz_cron_triggers.TRIGGER_NAME
 			AND qrtz_triggers.TRIGGER_GROUP = qrtz_cron_triggers.TRIGGER_GROUP
     </select>
-    
+
 </mapper>

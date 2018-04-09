@@ -1,12 +1,11 @@
 package com.lxl.quartz.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.lxl.quartz.entity.JobAndTrigger;
 import com.lxl.quartz.job.BaseJob;
 import com.lxl.quartz.service.JobAndTriggerService;
-import com.github.pagehelper.PageInfo;
+import lombok.extern.slf4j.Slf4j;
 import org.quartz.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
@@ -20,10 +19,10 @@ import java.util.Map;
  * @Description: TODO
  * @create 2018-04-09 10:48
  **/
+@Slf4j
 @RestController
 @RequestMapping(value = "/job")
 public class JobController {
-    private static Logger log = LoggerFactory.getLogger(JobController.class);
     @Autowired
     private JobAndTriggerService iJobAndTriggerService;
     //加入Qulifier注解，通过名称注入bean
@@ -175,6 +174,4 @@ public class JobController {
         map.put("number", jobAndTrigger.getTotal());
         return map;
     }
-
-
 }
