@@ -11,7 +11,7 @@
     <style>
         #top {
             background: #20A0FF;
-            padding: 5px;
+            padding: 12px;
             overflow: hidden
         }
     </style>
@@ -22,13 +22,13 @@
 
     <div id="top">
         <el-button type="text" @click="search" style="color:white">查询</el-button>
-        <el-button type="text" @click="handleadd" style="color:white">添加</el-button>
+        <el-button type="text" @click="handleAdd" style="color:white">添加</el-button>
         </span>
     </div>
 
     <br/>
 
-    <div style="margin-top:15px">
+    <div style="margin-top:5px">
 
         <el-table
                 ref="testTable"
@@ -126,6 +126,9 @@
             <el-form-item label="任务名称" label-width="120px" style="width:35%">
                 <el-input v-model="form.jobName" auto-complete="off"></el-input>
             </el-form-item>
+            <el-form-item label="任务完整类名" label-width="120px" style="width:35%">
+                <el-input v-model="form.jobClassName" auto-complete="off"></el-input>
+            </el-form-item>
             <el-form-item label="任务分组" label-width="120px" style="width:35%">
                 <el-input v-model="form.jobGroup" auto-complete="off"></el-input>
             </el-form-item>
@@ -141,6 +144,9 @@
 
     <el-dialog title="修改任务" :visible.sync="updateFormVisible">
         <el-form :model="updateform">
+            <el-form-item label="任务名称" label-width="120px" style="width:35%">
+                <el-input v-model="updateform.jobName" auto-complete="off"></el-input>
+            </el-form-item>
             <el-form-item label="表达式" label-width="120px" style="width:35%">
                 <el-input v-model="updateform.cronExpression" auto-complete="off"></el-input>
             </el-form-item>
@@ -163,35 +169,27 @@
         data: {
             //表格当前页数据
             tableData: [],
-
             //请求的URL
-            url: 'job/queryjob',
-
+            url: 'jobs/queryjob',
             //默认每页数据量
             pagesize: 10,
-
             //当前页码
             currentPage: 1,
-
             //查询的页码
             start: 1,
-
             //默认数据总数
             totalCount: 1000,
-
             //添加对话框默认可见性
             dialogFormVisible: false,
-
             //修改对话框默认可见性
             updateFormVisible: false,
-
             //提交的表单
             form: {
                 jobName: '',
+                jobClassName: '',
                 jobGroup: '',
                 cronExpression: '',
             },
-
             updateform: {
                 jobName: '',
                 jobGroup: '',
@@ -200,10 +198,9 @@
         },
 
         methods: {
-
             //从服务器读取数据
             loadData: function (pageNum, pageSize) {
-                this.$http.get('job/queryjob?' + 'pageNum=' + pageNum + '&pageSize=' + pageSize).then(function (res) {
+                this.$http.get('jobs/queryjob?' + 'pageNum=' + pageNum + '&pageSize=' + pageSize).then(function (res) {
                     console.log(res)
                     this.tableData = res.body.JobAndTrigger.list;
                     this.totalCount = res.body.number;
@@ -214,7 +211,7 @@
 
             //单行删除
             handleDelete: function (index, row) {
-                this.$http.post('job/deletejob', {
+                this.$http.post('jobs/deletejob', {
                     "jobClassName": row.jobName,
                     "jobGroupName": row.jobGroup
                 }, {emulateJSON: true}).then(function (res) {
@@ -226,7 +223,7 @@
 
             //暂停任务
             handlePause: function (index, row) {
-                this.$http.post('job/pausejob', {
+                this.$http.post('jobs/pausejob', {
                     "jobClassName": row.jobName,
                     "jobGroupName": row.jobGroup
                 }, {emulateJSON: true}).then(function (res) {
@@ -238,7 +235,7 @@
 
             //恢复任务
             handleResume: function (index, row) {
-                this.$http.post('job/resumejob', {
+                this.$http.post('jobs/resumejob', {
                     "jobClassName": row.jobName,
                     "jobGroupName": row.jobGroup
                 }, {emulateJSON: true}).then(function (res) {
@@ -254,14 +251,15 @@
             },
 
             //弹出对话框
-            handleadd: function () {
+            handleAdd: function () {
                 this.dialogFormVisible = true;
             },
 
             //添加
             add: function () {
-                this.$http.post('job/addjob', {
-                    "jobClassName": this.form.jobName,
+                this.$http.post('jobs/addJob', {
+                    "jobName": this.form.jobName,
+                    "jobClassName": this.form.jobClassName,
                     "jobGroupName": this.form.jobGroup,
                     "cronExpression": this.form.cronExpression
                 }, {emulateJSON: true}).then(function (res) {
@@ -276,16 +274,17 @@
             handleUpdate: function (index, row) {
                 console.log(row)
                 this.updateFormVisible = true;
-                this.updateform.jobName = row.jobClassName;
+                this.updateform.jobName = row.jobName;
+                this.updateform.jobClassName = row.jobClassName;
                 this.updateform.jobGroup = row.jobGroup;
             },
 
             //更新任务
             update: function () {
                 this.$http.post
-                ('job/reschedulejob',
+                ('jobs/reschedulejob',
                     {
-                        "jobClassName": this.updateform.jobName,
+                        "jobClassName": this.updateform.jobClassName,
                         "jobGroupName": this.updateform.jobGroup,
                         "cronExpression": this.updateform.cronExpression
                     }, {emulateJSON: true}
@@ -309,10 +308,7 @@
                 this.currentPage = val;
                 this.loadData(this.currentPage, this.pagesize);
             },
-
         },
-
-
     });
 
     //载入数据

@@ -5,7 +5,8 @@ import com.github.pagehelper.PageInfo;
 import com.lxl.quartz.dao.JobAndTriggerMapper;
 import com.lxl.quartz.entity.JobAndTrigger;
 import com.lxl.quartz.service.JobAndTriggerService;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,10 +19,9 @@ import java.util.List;
  * @Description: TODO
  * @create 2018-04-09 10:48
  **/
-@Slf4j
 @Service
-public class JobAndTriggerImpl implements JobAndTriggerService {
-
+public class JobAndTriggerServiceImpl implements JobAndTriggerService {
+    protected static Logger logger = LoggerFactory.getLogger(JobAndTriggerServiceImpl.class);
     @Autowired
     private JobAndTriggerMapper jobAndTriggerMapper;
 
@@ -30,7 +30,7 @@ public class JobAndTriggerImpl implements JobAndTriggerService {
         PageHelper.startPage(pageNum, pageSize);
         List<JobAndTrigger> list = jobAndTriggerMapper.getJobAndTriggerDetails();
         PageInfo<JobAndTrigger> page = new PageInfo<JobAndTrigger>(list);
-        log.info(String.format("get jobs return {%s} record", page != null ? page.getTotal() : 0));
+        logger.info(String.format("get jobs return {%s} record", page != null ? page.getTotal() : 0));
         return page;
     }
 
