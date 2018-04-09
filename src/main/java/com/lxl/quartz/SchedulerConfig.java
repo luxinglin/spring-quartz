@@ -1,7 +1,4 @@
-package com.example.demo;
-
-import java.io.IOException;
-import java.util.Properties;
+package com.lxl.quartz;
 
 import org.quartz.Scheduler;
 import org.quartz.ee.servlet.QuartzInitializerListener;
@@ -11,6 +8,15 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 
+import java.io.IOException;
+import java.util.Properties;
+
+/**
+ * @author luxinglin
+ * @version 1.0
+ * @Description: TODO
+ * @create 2018-04-09 10:48
+ **/
 @Configuration
 public class SchedulerConfig {
 

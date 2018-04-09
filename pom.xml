@@ -55,10 +55,25 @@
 	   	 	<artifactId>pagehelper</artifactId>
 	    	<version>5.0.0</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.16.18</version>
+			<scope>provided</scope>
+		</dependency>
 		
 	</dependencies>
 
 	<build>
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.xml</include>
+				</includes>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -104,6 +119,8 @@
 			</snapshots>
 		</pluginRepository>
 	</pluginRepositories>
+
+
 
 
 </project>
