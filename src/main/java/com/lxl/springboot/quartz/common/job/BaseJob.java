@@ -1,4 +1,4 @@
-package com.lxl.quartz.job;
+package com.lxl.springboot.quartz.common.job;
 
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;

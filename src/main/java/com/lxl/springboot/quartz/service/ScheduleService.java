@@ -1,4 +1,4 @@
-package com.lxl.quartz.service;
+package com.lxl.springboot.quartz.service;
 
 /**
  * @author luxinglin

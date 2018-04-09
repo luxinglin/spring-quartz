@@ -1,4 +1,4 @@
-package com.lxl.quartz.entity;
+package com.lxl.springboot.quartz.entity;
 
 import java.math.BigInteger;
 

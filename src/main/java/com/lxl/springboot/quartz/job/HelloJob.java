@@ -1,5 +1,6 @@
-package com.lxl.quartz.job;
+package com.lxl.springboot.quartz.job;
 
+import com.lxl.springboot.quartz.common.job.BaseJob;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.slf4j.Logger;

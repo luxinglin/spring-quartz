@@ -1,4 +1,4 @@
-package com.lxl.quartz;
+package com.lxl.springboot.quartz;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;

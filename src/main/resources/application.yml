@@ -6,6 +6,6 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     
 mybatis: 
-  mapper-locations: classpath:com/lxl/quartz/mapper/*.xml
-  type-aliases-package: com.lxl.quartz.entity
+  mapper-locations: classpath:com/lxl/springboot/quartz/mapper/*.xml
+  type-aliases-package: com.lxl.springboot.quartz.entity
     

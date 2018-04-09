@@ -1,9 +1,9 @@
-package com.lxl.quartz.controller;
+package com.lxl.springboot.quartz.controller;
 
 import com.github.pagehelper.PageInfo;
-import com.lxl.quartz.entity.JobAndTrigger;
-import com.lxl.quartz.service.JobAndTriggerService;
-import com.lxl.quartz.service.ScheduleService;
+import com.lxl.springboot.quartz.entity.JobAndTrigger;
+import com.lxl.springboot.quartz.service.JobAndTriggerService;
+import com.lxl.springboot.quartz.service.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

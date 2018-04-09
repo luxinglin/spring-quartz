@@ -1,6 +1,6 @@
-package com.lxl.quartz.dao;
+package com.lxl.springboot.quartz.dao;
 
-import com.lxl.quartz.entity.JobAndTrigger;
+import com.lxl.springboot.quartz.entity.JobAndTrigger;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

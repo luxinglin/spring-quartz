@@ -1,10 +1,10 @@
-package com.lxl.quartz.service.impl;
+package com.lxl.springboot.quartz.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.lxl.quartz.dao.JobAndTriggerMapper;
-import com.lxl.quartz.entity.JobAndTrigger;
-import com.lxl.quartz.service.JobAndTriggerService;
+import com.lxl.springboot.quartz.dao.JobAndTriggerMapper;
+import com.lxl.springboot.quartz.entity.JobAndTrigger;
+import com.lxl.springboot.quartz.service.JobAndTriggerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

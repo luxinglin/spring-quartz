@@ -1,7 +1,7 @@
-package com.lxl.quartz.service;
+package com.lxl.springboot.quartz.service;
 
 
-import com.lxl.quartz.entity.JobAndTrigger;
+import com.lxl.springboot.quartz.entity.JobAndTrigger;
 import com.github.pagehelper.PageInfo;
 
 /**

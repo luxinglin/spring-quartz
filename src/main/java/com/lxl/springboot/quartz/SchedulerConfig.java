@@ -1,4 +1,4 @@
-package com.lxl.quartz;
+package com.lxl.springboot.quartz;
 
 import org.quartz.Scheduler;
 import org.quartz.ee.servlet.QuartzInitializerListener;

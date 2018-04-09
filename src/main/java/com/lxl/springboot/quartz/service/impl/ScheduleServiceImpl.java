@@ -1,7 +1,7 @@
-package com.lxl.quartz.service.impl;
+package com.lxl.springboot.quartz.service.impl;
 
-import com.lxl.quartz.job.BaseJob;
-import com.lxl.quartz.service.ScheduleService;
+import com.lxl.springboot.quartz.common.job.BaseJob;
+import com.lxl.springboot.quartz.service.ScheduleService;
 import org.quartz.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
